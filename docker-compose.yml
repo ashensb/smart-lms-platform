@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  # 🔙 Backend Service
+  backend:
+    build:
+      context: ./backend # Backend Dockerfile 
+    ports:
+      - "5000:5000" # <Host Port>:<Container Port>
+    environment:
+      - PORT=5000
+      - MONGO_URI=mongodb+srv://admin:1234@cluster0.otbtekf.mongodb.net/LMS?appName=Cluster0
+      - JWT_SECRET=lms_super_secret_key_123456
+    restart: always
+
+  # 💻 Frontend Service
+  frontend:
+    build:
+      context: ./frontend # Frontend Dockerfile 
+    ports:
+      - "80:80" # Nginx  80 - http://localhost 
+    restart: always
+    depends_on:
+      - backend 
