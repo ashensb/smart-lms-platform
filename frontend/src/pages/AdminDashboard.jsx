@@ -39,7 +39,7 @@ export default function AdminDashboard() {
 
   const fetchCourses = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/courses/all');
+      const response = await axios.get('http://65.2.25.61:5000/api/courses/all');
       setCourses(response.data);
     } catch (error) {
       console.error("Error fetching courses:", error);
@@ -57,10 +57,10 @@ export default function AdminDashboard() {
     try {
       setIsLoading(true);
       if (isEditing) {
-        await axios.put(`http://localhost:5000/api/courses/update/${currentCourseId}`, formData);
+        await axios.put(`http://65.2.25.61:5000/api/courses/update/${currentCourseId}`, formData);
         alert('Course updated successfully! 🎉');
       } else {
-        await axios.post('http://localhost:5000/api/courses/create', { ...formData, modules: [] });
+        await axios.post('http://65.2.25.61:5000/api/courses/create', { ...formData, modules: [] });
         alert('Course added successfully! 🎓');
       }
       setFormData({ title: '', description: '', instructor: '', thumbnail: '', category: 'Web Development' });
@@ -80,7 +80,7 @@ export default function AdminDashboard() {
     if (!newModuleTitle.trim()) return alert("Enter a module title!");
     try {
       const updatedModules = [...(selectedCourseForContent.modules || []), { title: newModuleTitle, lectures: [] }];
-      const res = await axios.put(`http://localhost:5000/api/courses/update/${selectedCourseForContent._id}`, {
+      const res = await axios.put(`http://65.2.25.61:5000/api/courses/update/${selectedCourseForContent._id}`, {
         ...selectedCourseForContent,
         modules: updatedModules
       });
@@ -101,7 +101,7 @@ export default function AdminDashboard() {
         moduleId ? mod._id !== moduleId : mod.title !== moduleTitle
       );
 
-      const res = await axios.put(`http://localhost:5000/api/courses/update/${selectedCourseForContent._id}`, {
+      const res = await axios.put(`http://65.2.25.61:5000/api/courses/update/${selectedCourseForContent._id}`, {
         ...selectedCourseForContent,
         modules: updatedModules
       });
@@ -133,7 +133,7 @@ export default function AdminDashboard() {
         return mod;
       });
 
-      const res = await axios.put(`http://localhost:5000/api/courses/update/${selectedCourseForContent._id}`, {
+      const res = await axios.put(`http://65.2.25.61:5000/api/courses/update/${selectedCourseForContent._id}`, {
         ...selectedCourseForContent,
         modules: updatedModules
       });
@@ -161,7 +161,7 @@ export default function AdminDashboard() {
         return mod;
       });
 
-      const res = await axios.put(`http://localhost:5000/api/courses/update/${selectedCourseForContent._id}`, {
+      const res = await axios.put(`http://65.2.25.61:5000/api/courses/update/${selectedCourseForContent._id}`, {
         ...selectedCourseForContent,
         modules: updatedModules
       });
@@ -183,7 +183,7 @@ export default function AdminDashboard() {
   const handleDelete = async (courseId) => {
     if (window.confirm("Are you sure?")) {
       try {
-        await axios.delete(`http://localhost:5000/api/courses/delete/${courseId}`);
+        await axios.delete(`http://65.2.25.61:5000/api/courses/delete/${courseId}`);
         fetchCourses();
       } catch (error) {
         alert("Failed to delete course!");

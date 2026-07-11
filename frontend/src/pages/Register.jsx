@@ -13,7 +13,7 @@ export default function Register() {
     try {
       setIsLoading(true);
       
-      const response = await axios.post('http://localhost:5000/api/auth/register', formData);
+      const response = await axios.post('http://65.2.25.61:5000/api/auth/register', formData);
       
       alert('Registration Successful! 🎉 Now you can Login.');
       navigate('/login'); 

@@ -7,10 +7,10 @@ export default function CourseViewer() {
   const { id } = useParams();
   const navigate = useNavigate();
   
-  // 👤 දැනට ටෙස්ට් කරන්න Dummy User Data (Authentication හැදුවාම මේවා dynamic වෙනවා)
+  
   const userId = "668be2ca22b8214fa3ca0d49";
   const userName = "Prof. Minel Student"; 
-  const userRole = "student"; // ගුරුවරයාට ටෙස්ට් කරන්න 'admin' දාන්න පුළුවන්
+  const userRole = "student"; 
 
   const [course, setCourse] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -30,7 +30,7 @@ export default function CourseViewer() {
   useEffect(() => {
     const fetchCourseAndProgress = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/courses/all`);
+        const response = await axios.get(`http://65.2.25.61:5000/api/courses/all`);
         const foundCourse = response.data.find(c => c._id === id);
         setCourse(foundCourse);
         
@@ -39,7 +39,7 @@ export default function CourseViewer() {
         }
 
         if (userId) {
-          const progressRes = await axios.get(`http://localhost:5000/api/courses/progress/${userId}/${id}`);
+          const progressRes = await axios.get(`http://65.2.25.61:5000/api/courses/progress/${userId}/${id}`);
           if (progressRes.data && progressRes.data.success !== false) {
             setCompletedLectures(progressRes.data.completedChapters || []);
             setProgressPercentage(progressRes.data.percentage || 0);
@@ -58,7 +58,7 @@ export default function CourseViewer() {
   useEffect(() => {
     if (activeLecture) {
       const lectureIdentifier = activeLecture._id || activeLecture.title;
-      axios.get(`http://localhost:5000/api/comments/${lectureIdentifier}`)
+      axios.get(`http://65.2.25.61:5000/api/comments/${lectureIdentifier}`)
         .then(res => setComments(res.data))
         .catch(err => console.error("Error fetching comments:", err));
     }
@@ -74,7 +74,7 @@ export default function CourseViewer() {
     const lectureIdentifier = activeLecture._id || activeLecture.title;
 
     try {
-      const res = await axios.post(`http://localhost:5000/api/comments/add`, {
+      const res = await axios.post(`http://65.2.25.61:5000/api/comments/add`, {
         courseId: id,
         lectureId: lectureIdentifier,
         userId,
@@ -97,7 +97,7 @@ export default function CourseViewer() {
     if (!text || !text.trim()) return;
 
     try {
-      const res = await axios.post(`http://localhost:5000/api/comments/reply/${commentId}`, {
+      const res = await axios.post(`http://65.2.25.61:5000/api/comments/reply/${commentId}`, {
         userId,
         userName,
         userRole,

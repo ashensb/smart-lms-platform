@@ -21,7 +21,7 @@ export default function StudentDashboard() {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/courses/all');
+        const response = await axios.get('http://65.2.25.61:5000/api/courses/all');
         setCourses(response.data);
       } catch (error) {
         console.error("Error fetching courses:", error);
