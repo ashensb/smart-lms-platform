@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: lms-backend-service #  remmember to change the name of the service to match your backend service name
+spec:
+  type: ClusterIP # only open to other services inside the cluster (default type)
+  selector:
+    app: lms-backend
+  ports:
+    - protocol: TCP
+      port: 5000       # Service port
+      targetPort: 5000 # Backend Container port 

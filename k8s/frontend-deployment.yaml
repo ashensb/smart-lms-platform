@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lms-frontend-deployment
+  labels:
+    app: lms-frontend
+spec:
+  replicas: 2 #  runing a 2 pods for the frontend container (High Availability)
+  selector:
+    matchLabels:
+      app: lms-frontend
+  template:
+    metadata:
+      labels:
+        app: lms-frontend
+    spec:
+      containers:
+      - name: lms-frontend
+        image: ashensb/lms-frontend:v5 #  new docker image
+        ports:
+        - containerPort: 80

@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lms-backend-deployment
+  labels:
+    app: lms-backend
+spec:
+  replicas: 1 #  runing a 1 pod for the backend container (for testing purposes)
+  selector:
+    matchLabels:
+      app: lms-backend
+  template:
+    metadata:
+      labels:
+        app: lms-backend
+    spec:
+      containers:
+      - name: lms-backend
+        image: ashensb/lms-backend:v1 #  new docker image and dockerhub username
+        ports:
+        - containerPort: 5000
