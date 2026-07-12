@@ -54,10 +54,9 @@ pipeline {
 
         stage('Deploy to Kubernetes') {
             steps {
-                echo 'Deploying to Local Kubernetes Cluster...'
-                // --validate=false added
-                bat "kubectl apply -f k8s/ --validate=false"
-            }
+               echo 'Deploying to Local Kubernetes Cluster...'
+               bat 'kubectl apply -f k8s/ --kubeconfig="C:\\Users\\Ashen\\.kube\\config" --validate=false'
+             }
         }
     }
 }
