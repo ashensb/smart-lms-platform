@@ -55,8 +55,8 @@ pipeline {
         stage('Deploy to Kubernetes') {
             steps {
                 echo 'Deploying to Local Kubernetes Cluster...'
-                // Windows bat throught kubectl apply 
-                bat "kubectl apply -f k8s/"
+                // --validate=false added
+                bat "kubectl apply -f k8s/ --validate=false"
             }
         }
     }
