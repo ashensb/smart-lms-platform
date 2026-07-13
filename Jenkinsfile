@@ -59,18 +59,18 @@ pipeline {
              }
         }
 
-       stage('Deploy to AWS Production') {
-            steps {
-               echo 'Connecting to AWS EC2 via SSH and updating Container...'
+      stage('Deploy to AWS Production') {
+             steps {
+                echo 'Connecting to AWS EC2 via SSH and updating Container...'
         
-        
-              withCredentials([sshUserPrivateKey(credentialsId: 'aws-ec2-ssh-lms', keyFileVariable: 'keyFile')]) {
-                  bat """
-                   icacls "%keyFile%" /inheritance:r
-                   icacls "%keyFile%" /grant:r "%username%":"(R,W)"
-                  ssh -o StrictHostKeyChecking=no -i "%keyFile%" ubuntu@65.2.25.61 "docker pull ashensb/lms-frontend:latest && docker stop lms-frontend-container || true && docker rm lms-frontend-container || true && docker run -d --name lms-frontend-container -p 80:80 ashensb/lms-frontend:latest"
+                withCredentials([sshUserPrivateKey(credentialsId: 'aws-ec2-ssh-lms', keyFileVariable: 'keyFile')]) {
+                   bat """
+                      icacls "%keyFile%" /inheritance:r
+                      icacls "%keyFile%" /grant:r "SYSTEM":(R,W)
+                      icacls "%keyFile%" /grant:r "Administrators":(R,W)
+                      ssh -o StrictHostKeyChecking=no -i "%keyFile%" ubuntu@65.2.25.61 "docker pull ashensb/lms-frontend:latest && docker stop lms-frontend-container || true && docker rm lms-frontend-container || true && docker run -d --name lms-frontend-container -p 80:80 ashensb/lms-frontend:latest"
                   """
-                }
+                 }
             }
         }
     }
