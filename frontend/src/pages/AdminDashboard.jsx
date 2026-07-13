@@ -44,7 +44,7 @@ export default function AdminDashboard() {
     } catch (error) {
       console.error("Error fetching courses:", error);
     } finally {
-      isLoading(false);
+     setIsLoading(false);
     }
   };
 
