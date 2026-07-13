@@ -60,17 +60,19 @@ pipeline {
         }
 
      stage('Deploy to AWS Production') {
-           steps {
-              echo 'Connecting to AWS EC2 via SSH and updating Container...'
+            steps {
+               echo 'Connecting to AWS EC2 via SSH and updating Container...'
         
-              withCredentials([sshUserPrivateKey(credentialsId: 'aws-ec2-ssh-lms', keyFileVariable: 'keyFile')]) {
-                bat """
-                   icacls "%keyFile%" /inheritance:r
-                   icacls "%keyFile%" /grant:r "SYSTEM":(R,W)
-                   icacls "%keyFile%" /grant:r "Administrators":(R,W)
-                   ssh -o StrictHostKeyChecking=no -i "%keyFile%" ubuntu@65.2.25.61 "sudo docker pull ashensb/lms-frontend:latest && sudo docker stop lms-frontend-container || true && sudo docker rm lms-frontend-container || true && sudo docker run -d --name lms-frontend-container -p 80:80 ashensb/lms-frontend:latest"
-                """
-               }
+               withCredentials([sshUserPrivateKey(credentialsId: 'aws-ec2-ssh-lms', keyFileVariable: 'keyFile')]) {
+                  bat """
+                     icacls "%keyFile%" /inheritance:r
+                     icacls "%keyFile%" /grant:r "SYSTEM":(R,W)
+                     icacls "%keyFile%" /grant:r "Administrators":(R,W)
+                
+                     :: build-${BUILD_NUMBER} ටැග් එකෙන් ඉමේජ් එක pull කරලා run කරනවා
+                     ssh -o StrictHostKeyChecking=no -i "%keyFile%" ubuntu@65.2.25.61 "sudo docker pull ashensb/lms-frontend:build-${BUILD_NUMBER} && sudo docker stop lms-frontend-container || true && sudo docker rm lms-frontend-container || true && sudo docker run -d --name lms-frontend-container -p 80:80 ashensb/lms-frontend:build-${BUILD_NUMBER}"
+                  """
+                }
             }
         }
     }
