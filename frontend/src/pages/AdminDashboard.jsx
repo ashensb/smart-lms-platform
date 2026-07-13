@@ -44,7 +44,7 @@ export default function AdminDashboard() {
     } catch (error) {
       console.error("Error fetching courses:", error);
     } finally {
-      setIsLoading(false);
+      isLoading(false);
     }
   };
 
@@ -191,7 +191,6 @@ export default function AdminDashboard() {
     }
   };
 
-  
   const currentActiveModule = selectedCourseForContent?.modules?.find(m => m._id === selectedModuleId || m.title === selectedModuleId);
 
   return (
@@ -201,17 +200,17 @@ export default function AdminDashboard() {
       <aside className="w-64 bg-white border-r border-slate-200 flex flex-col justify-between p-5 hidden md:flex sticky top-0 h-screen shadow-[4px_0_24px_rgba(0,0,0,0.02)]">
         <div className="space-y-7">
           <div className="flex items-center gap-3 py-2 px-1">
-            <div className="h-9 w-9 bg-blue-600 rounded-xl flex items-center justify-center font-black text-white shadow-md shadow-blue-100">
+            <div className="h-9 w-9 bg-emerald-600 rounded-xl flex items-center justify-center font-black text-white shadow-md shadow-emerald-100">
               <GraduationCap className="h-5 w-5" />
             </div>
             <span className="text-lg font-bold text-slate-800 tracking-tight">AdminPanel</span>
           </div>
 
           <nav className="space-y-1">
-            <button onClick={() => setActiveTab('overview')} className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all ${activeTab === 'overview' ? 'bg-blue-600 text-white shadow-md shadow-blue-100' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-800'}`}>
+            <button onClick={() => setActiveTab('overview')} className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all ${activeTab === 'overview' ? 'bg-emerald-600 text-white shadow-md shadow-emerald-100' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-800'}`}>
               <List className="h-4 w-4" /> Overview
             </button>
-            <button onClick={() => { if(!isEditing) setFormData({ title: '', description: '', instructor: '', thumbnail: '', category: 'Web Development' }); setActiveTab('add-course'); }} className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all ${activeTab === 'add-course' ? 'bg-blue-600 text-white shadow-md shadow-blue-100' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-800'}`}>
+            <button onClick={() => { if(!isEditing) setFormData({ title: '', description: '', instructor: '', thumbnail: '', category: 'Web Development' }); setActiveTab('add-course'); }} className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all ${activeTab === 'add-course' ? 'bg-emerald-600 text-white shadow-md shadow-emerald-100' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-800'}`}>
               <FolderPlus className="h-4 w-4" /> {isEditing ? 'Edit Course' : 'Add Course'}
             </button>
           </nav>
@@ -219,12 +218,12 @@ export default function AdminDashboard() {
 
         <div className="border-t border-slate-100 pt-4 space-y-3">
           <div className="flex items-center gap-3 px-1">
-            <div className="h-10 w-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold uppercase border border-blue-100">
+            <div className="h-10 w-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold uppercase border border-emerald-100">
               {user?.name?.charAt(0) || 'A'}
             </div>
             <div className="truncate">
               <p className="text-sm font-bold text-slate-800 truncate">{user?.name || 'Admin User'}</p>
-              <p className="text-[10px] bg-blue-50 text-blue-600 font-bold px-2 py-0.5 rounded-md inline-block uppercase mt-0.5">ADMIN</p>
+              <p className="text-[10px] bg-emerald-50 text-emerald-600 font-bold px-2 py-0.5 rounded-md inline-block uppercase mt-0.5">ADMIN</p>
             </div>
           </div>
           <button onClick={logout} className="w-full flex items-center justify-center gap-2 bg-slate-50 hover:bg-rose-50 hover:text-rose-600 border border-slate-200/60 py-2.5 rounded-xl text-sm font-semibold transition-all text-slate-500">
@@ -241,7 +240,7 @@ export default function AdminDashboard() {
             {/* TOP CARDS */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
               <div className="bg-white border border-slate-200 p-5 rounded-2xl flex items-center gap-4 shadow-sm">
-                <div className="p-3 bg-blue-50 text-blue-600 rounded-xl border border-blue-100/50"><BookOpen className="h-5 w-5" /></div>
+                <div className="p-3 bg-emerald-50 text-emerald-600 rounded-xl border border-emerald-100/50"><BookOpen className="h-5 w-5" /></div>
                 <div><h3 className="text-xs font-bold uppercase text-slate-400 tracking-wider">Total Courses</h3><p className="text-2xl font-bold text-slate-800">{courses.length}</p></div>
               </div>
               <div className="bg-white border border-slate-200 p-5 rounded-2xl flex items-center gap-4 shadow-sm">
@@ -257,11 +256,11 @@ export default function AdminDashboard() {
             {/*  COURSE LIST TABLE */}
             <div className="bg-white border border-slate-200 rounded-3xl p-6 md:p-8 shadow-sm space-y-5">
               <h2 className="text-lg font-bold text-slate-800 flex items-center gap-2">
-                <GraduationCap className="text-blue-600" /> Manage Courses
+                <GraduationCap className="text-emerald-600" /> Manage Courses
               </h2>
               
               {isLoading ? (
-                <div className="flex justify-center py-12"><Loader2 className="animate-spin text-blue-600" /></div>
+                <div className="flex justify-center py-12"><Loader2 className="animate-spin text-emerald-600" /></div>
               ) : (
                 <div className="overflow-x-auto">
                   <table className="w-full text-left border-collapse">
@@ -289,13 +288,13 @@ export default function AdminDashboard() {
                           <td className="py-4 px-4">
                             <button 
                               onClick={() => { setSelectedCourseForContent(c); setIsContentModalOpen(true); }}
-                              className="flex items-center gap-1.5 px-3 py-1.5 bg-blue-50 hover:bg-blue-100 text-blue-600 rounded-lg text-xs font-bold transition-all border border-blue-100/50 shadow-2xs"
+                              className="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-50 hover:bg-emerald-100 text-emerald-600 rounded-lg text-xs font-bold transition-all border border-emerald-100/50 shadow-2xs"
                             >
                               <Layers className="h-3.5 w-3.5" /> Videos ({c.modules?.reduce((acc, m) => acc + (m.lectures?.length || 0), 0) || 0})
                             </button>
                           </td>
                           <td className="py-4 px-4 text-right space-x-1">
-                            <button onClick={() => startEdit(c)} className="p-2 text-slate-400 hover:text-blue-600 hover:bg-blue-50 rounded-xl transition-all">
+                            <button onClick={() => startEdit(c)} className="p-2 text-slate-400 hover:text-emerald-600 hover:bg-emerald-50 rounded-xl transition-all">
                               <Edit3 className="h-4 w-4" />
                             </button>
                             <button onClick={() => handleDelete(c._id)} className="p-2 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-xl transition-all">
@@ -317,7 +316,7 @@ export default function AdminDashboard() {
           <div className="max-w-xl mx-auto bg-white border border-slate-200 rounded-3xl p-6 md:p-8 space-y-6 shadow-sm">
             <div className="flex justify-between items-center">
               <h2 className="text-xl font-bold text-slate-800 flex items-center gap-2">
-                <PlusCircle className="text-blue-600" /> {isEditing ? 'Edit Existing Course' : 'Create New Course'}
+                <PlusCircle className="text-emerald-600" /> {isEditing ? 'Edit Existing Course' : 'Create New Course'}
               </h2>
               {isEditing && (
                 <button onClick={() => { setIsEditing(false); setFormData({title:'', description:'', instructor:'', thumbnail:'', category:'Web Development'}); setActiveTab('overview'); }} className="text-slate-400 hover:text-slate-600"><X className="h-5 w-5" /></button>
@@ -327,12 +326,12 @@ export default function AdminDashboard() {
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label className="text-xs font-bold uppercase text-slate-500 block mb-1.5 tracking-wider">Course Title</label>
-                <input required type="text" value={formData.title} onChange={e => setFormData({...formData, title: e.target.value})} className="w-full bg-slate-50/50 border border-slate-200 focus:border-blue-500 focus:bg-white rounded-xl px-4 py-2.5 text-sm text-slate-800 outline-none transition-all placeholder-slate-400" placeholder="Ex: DevOps Masterclass" />
+                <input required type="text" value={formData.title} onChange={e => setFormData({...formData, title: e.target.value})} className="w-full bg-slate-50/50 border border-slate-200 focus:border-emerald-500 focus:bg-white rounded-xl px-4 py-2.5 text-sm text-slate-800 outline-none transition-all placeholder-slate-400" placeholder="Ex: DevOps Masterclass" />
               </div>
 
               <div>
                 <label className="text-xs font-bold uppercase text-slate-500 block mb-1.5 tracking-wider">Category</label>
-                <select value={formData.category} onChange={e => setFormData({...formData, category: e.target.value})} className="w-full bg-slate-50/50 border border-slate-200 focus:border-blue-500 focus:bg-white rounded-xl px-4 py-2.5 text-sm text-slate-700 outline-none transition-all cursor-pointer font-medium">
+                <select value={formData.category} onChange={e => setFormData({...formData, category: e.target.value})} className="w-full bg-slate-50/50 border border-slate-200 focus:border-emerald-500 focus:bg-white rounded-xl px-4 py-2.5 text-sm text-slate-700 outline-none transition-all cursor-pointer font-medium">
                   <option value="Web Development">Web Development</option>
                   <option value="DevOps">DevOps</option>
                   <option value="Data Science">Data Science</option>
@@ -343,20 +342,20 @@ export default function AdminDashboard() {
 
               <div>
                 <label className="text-xs font-bold uppercase text-slate-500 block mb-1.5 tracking-wider">Instructor Name</label>
-                <input required type="text" value={formData.instructor} onChange={e => setFormData({...formData, instructor: e.target.value})} className="w-full bg-slate-50/50 border border-slate-200 focus:border-blue-500 focus:bg-white rounded-xl px-4 py-2.5 text-sm text-slate-800 outline-none transition-all placeholder-slate-400" placeholder="Ex: Prof. Jenny" />
+                <input required type="text" value={formData.instructor} onChange={e => setFormData({...formData, instructor: e.target.value})} className="w-full bg-slate-50/50 border border-slate-200 focus:border-emerald-500 focus:bg-white rounded-xl px-4 py-2.5 text-sm text-slate-800 outline-none transition-all placeholder-slate-400" placeholder="Ex: Prof. Jenny" />
               </div>
 
               <div>
                 <label className="text-xs font-bold uppercase text-slate-500 block mb-1.5 tracking-wider">Thumbnail URL</label>
-                <input required type="text" value={formData.thumbnail} onChange={e => setFormData({...formData, thumbnail: e.target.value})} className="w-full bg-slate-50/50 border border-slate-200 focus:border-blue-500 focus:bg-white rounded-xl px-4 py-2.5 text-sm text-slate-800 outline-none transition-all placeholder-slate-400" placeholder="https://images.unsplash.com/photo-..." />
+                <input required type="text" value={formData.thumbnail} onChange={e => setFormData({...formData, thumbnail: e.target.value})} className="w-full bg-slate-50/50 border border-slate-200 focus:border-emerald-500 focus:bg-white rounded-xl px-4 py-2.5 text-sm text-slate-800 outline-none transition-all placeholder-slate-400" placeholder="https://images.unsplash.com/photo-..." />
               </div>
 
               <div>
                 <label className="text-xs font-bold uppercase text-slate-500 block mb-1.5 tracking-wider">Description</label>
-                <textarea required rows="4" value={formData.description} onChange={e => setFormData({...formData, description: e.target.value})} className="w-full bg-slate-50/50 border border-slate-200 focus:border-blue-500 focus:bg-white rounded-xl px-4 py-2.5 text-sm text-slate-800 outline-none transition-all resize-none placeholder-slate-400" placeholder="Enter course specifications..."></textarea>
+                <textarea required rows="4" value={formData.description} onChange={e => setFormData({...formData, description: e.target.value})} className="w-full bg-slate-50/50 border border-slate-200 focus:border-emerald-500 focus:bg-white rounded-xl px-4 py-2.5 text-sm text-slate-800 outline-none transition-all resize-none placeholder-slate-400" placeholder="Enter course specifications..."></textarea>
               </div>
 
-              <button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-xl shadow-md shadow-blue-100 transition-all active:scale-[0.99] text-sm mt-2">
+              <button type="submit" className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 rounded-xl shadow-md shadow-emerald-100 transition-all active:scale-[0.99] text-sm mt-2">
                 {isEditing ? 'Update Course' : 'Publish Course'}
               </button>
             </form>
@@ -372,7 +371,7 @@ export default function AdminDashboard() {
             
             <div className="flex justify-between items-center border-b border-slate-100 pb-4">
               <div>
-                <h3 className="text-lg font-bold text-slate-800 flex items-center gap-2"><Video className="text-blue-600" /> Manage Videos & Course Syllabus</h3>
+                <h3 className="text-lg font-bold text-slate-800 flex items-center gap-2"><Video className="text-emerald-600" /> Manage Videos & Course Syllabus</h3>
                 <p className="text-xs text-slate-400 font-medium mt-0.5">Course: {selectedCourseForContent.title}</p>
               </div>
               <button onClick={() => { setIsContentModalOpen(false); setSelectedModuleId(''); }} className="p-1.5 bg-slate-50 hover:bg-slate-100 rounded-xl text-slate-400 hover:text-slate-600 transition-all"><X className="h-5 w-5" /></button>
@@ -381,10 +380,10 @@ export default function AdminDashboard() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Left Column: Create & Manage Module */}
               <div className="space-y-4 bg-slate-50/60 p-4 rounded-2xl border border-slate-200/50">
-                <h4 className="text-xs font-bold uppercase text-slate-500 tracking-wider flex items-center gap-1.5"><Folder className="h-3.5 w-3.5 text-blue-500" /> 1. Create & Manage Module</h4>
+                <h4 className="text-xs font-bold uppercase text-slate-500 tracking-wider flex items-center gap-1.5"><Folder className="h-3.5 w-3.5 text-emerald-500" /> 1. Create & Manage Module</h4>
                 <div className="flex gap-2">
-                  <input type="text" placeholder="e.g., Introduction" value={newModuleTitle} onChange={e => setNewModuleTitle(e.target.value)} className="flex-1 bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs outline-none focus:border-blue-500 transition-all" />
-                  <button onClick={handleAddModule} className="bg-blue-600 hover:bg-blue-700 text-white px-3.5 rounded-xl text-xs font-bold shadow-sm transition-all">+</button>
+                  <input type="text" placeholder="e.g., Introduction" value={newModuleTitle} onChange={e => setNewModuleTitle(e.target.value)} className="flex-1 bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs outline-none focus:border-emerald-500 transition-all" />
+                  <button onClick={handleAddModule} className="bg-emerald-600 hover:bg-emerald-700 text-white px-3.5 rounded-xl text-xs font-bold shadow-sm transition-all">+</button>
                 </div>
 
                 {/* Modules List inside modal with DELETE Option */}
@@ -394,7 +393,7 @@ export default function AdminDashboard() {
                     <p className="text-xs text-slate-400 italic">No modules added yet.</p>
                   ) : (
                     selectedCourseForContent.modules?.map((m, idx) => (
-                      <div key={m._id || idx} className={`text-xs font-semibold px-3 py-2 rounded-xl flex justify-between items-center border transition-all shadow-2xs ${selectedModuleId === (m._id || m.title) ? 'bg-blue-50 border-blue-200 text-blue-700' : 'bg-white border-slate-200/60 text-slate-600'}`}>
+                      <div key={m._id || idx} className={`text-xs font-semibold px-3 py-2 rounded-xl flex justify-between items-center border transition-all shadow-2xs ${selectedModuleId === (m._id || m.title) ? 'bg-emerald-50 border-emerald-200 text-emerald-700' : 'bg-white border-slate-200/60 text-slate-600'}`}>
                         <span className="truncate pr-2 cursor-pointer flex-1" onClick={() => setSelectedModuleId(m._id || m.title)}>📁 {m.title}</span>
                         <div className="flex items-center gap-2 shrink-0">
                           <span className="text-[10px] bg-slate-100 px-1.5 py-0.5 rounded-md text-slate-400 font-bold">{m.lectures?.length || 0} vids</span>
@@ -411,11 +410,11 @@ export default function AdminDashboard() {
               {/* Right Column: Add Video */}
               <div className="space-y-4">
                 <form onSubmit={handleAddLecture} className="space-y-3 bg-slate-50/40 p-4 rounded-2xl border border-slate-200/40">
-                  <h4 className="text-xs font-bold uppercase text-slate-500 tracking-wider flex items-center gap-1.5"><PlayCircle className="h-3.5 w-3.5 text-blue-500" /> 2. Add Video/Lecture</h4>
+                  <h4 className="text-xs font-bold uppercase text-slate-500 tracking-wider flex items-center gap-1.5"><PlayCircle className="h-3.5 w-3.5 text-emerald-500" /> 2. Add Video/Lecture</h4>
                   
                   <div>
                     <label className="text-[10px] font-bold uppercase text-slate-400 block mb-1">Select Module</label>
-                    <select required value={selectedModuleId} onChange={e => setSelectedModuleId(e.target.value)} className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs outline-none focus:border-blue-500 transition-all text-slate-700 font-medium">
+                    <select required value={selectedModuleId} onChange={e => setSelectedModuleId(e.target.value)} className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs outline-none focus:border-emerald-500 transition-all text-slate-700 font-medium">
                       <option value="">-- Choose Module --</option>
                       {selectedCourseForContent.modules?.map((m, idx) => (
                         <option key={m._id || idx} value={m._id || m.title}>{m.title}</option>
@@ -425,17 +424,17 @@ export default function AdminDashboard() {
 
                   <div>
                     <label className="text-[10px] font-bold uppercase text-slate-400 block mb-1">Video Title</label>
-                    <input required type="text" placeholder="e.g., Setting up Environment" value={lectureForm.title} onChange={e => setLectureForm({...lectureForm, title: e.target.value})} className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs outline-none focus:border-blue-500" />
+                    <input required type="text" placeholder="e.g., Setting up Environment" value={lectureForm.title} onChange={e => setLectureForm({...lectureForm, title: e.target.value})} className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs outline-none focus:border-emerald-500" />
                   </div>
 
                   <div className="grid grid-cols-3 gap-2">
                     <div className="col-span-2">
                       <label className="text-[10px] font-bold uppercase text-slate-400 block mb-1">YouTube URL</label>
-                      <input required type="text" placeholder="https://www.youtube.com/watch?v=..." value={lectureForm.videoUrl} onChange={e => setLectureForm({...lectureForm, videoUrl: e.target.value})} className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs outline-none focus:border-blue-500" />
+                      <input required type="text" placeholder="https://www.youtube.com/watch?v=..." value={lectureForm.videoUrl} onChange={e => setLectureForm({...lectureForm, videoUrl: e.target.value})} className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs outline-none focus:border-emerald-500" />
                     </div>
                     <div>
                       <label className="text-[10px] font-bold uppercase text-slate-400 block mb-1">Mins</label>
-                      <input required type="number" placeholder="15" value={lectureForm.duration} onChange={e => setLectureForm({...lectureForm, duration: e.target.value})} className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs outline-none focus:border-blue-500" />
+                      <input required type="number" placeholder="15" value={lectureForm.duration} onChange={e => setLectureForm({...lectureForm, duration: e.target.value})} className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs outline-none focus:border-emerald-500" />
                     </div>
                   </div>
 
