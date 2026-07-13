@@ -58,5 +58,13 @@ pipeline {
                bat 'kubectl apply -f k8s/ --kubeconfig="C:\\Users\\Ashen\\.kube\\config" --validate=false'
              }
         }
+
+        stage('Deploy to AWS Production') {
+           steps {
+               echo 'Connecting to AWS EC2 via SSH and updating Container...'
+        
+              bat 'ssh -o StrictHostKeyChecking=no -i "C:\\Users\\Ashen\\Desktop\\pem files\\lms-server-key.pem" ubuntu@65.2.25.61 "docker pull ashensb/lms-frontend:latest && docker stop lms-frontend-container || true && docker rm lms-frontend-container || true && docker run -d --name lms-frontend-container -p 80:80 ashensb/lms-frontend:latest"'
+           }
+        }
     }
 }
