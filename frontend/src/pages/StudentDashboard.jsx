@@ -43,14 +43,14 @@ export default function StudentDashboard() {
 
   return (
     
-    <div className="min-h-screen bg-[#F8FAFC] text-slate-800 flex font-sans selection:bg-blue-500/10">
+    <div className="min-h-screen bg-[#F8FAFC] text-slate-800 flex font-sans selection:bg-emerald-500/10">
       
-      {/* 📁 1. SIDEBAR (Premium Crisp Light Look) */}
+      {/* 📁 1. SIDEBAR (Premium Crisp Light Look) - [COLOR CHANGED TO EMERALD] */}
       <aside className="w-64 bg-white border-r border-slate-200 flex flex-col justify-between p-5 hidden md:flex sticky top-0 h-screen shadow-[4px_0_24px_rgba(0,0,0,0.02)]">
         <div className="space-y-7">
           {/* Brand Logo */}
           <div className="flex items-center gap-3 py-2 px-1 cursor-pointer" onClick={() => setActiveTab('dashboard')}>
-            <div className="h-9 w-9 bg-blue-600 rounded-xl flex items-center justify-center font-black text-white text-base shadow-md shadow-blue-100">
+            <div className="h-9 w-9 bg-emerald-600 rounded-xl flex items-center justify-center font-black text-white text-base shadow-md shadow-emerald-100">
               <BookOpenCheck className="h-5 w-5" />
             </div>
             <span className="text-lg font-bold text-slate-800 tracking-tight">SmartLMS</span>
@@ -62,7 +62,7 @@ export default function StudentDashboard() {
               onClick={() => setActiveTab('dashboard')}
               className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-200 ${
                 activeTab === 'dashboard' 
-                  ? 'bg-blue-600 text-white shadow-md shadow-blue-100' 
+                  ? 'bg-emerald-600 text-white shadow-md shadow-emerald-100' 
                   : 'text-slate-500 hover:bg-slate-50 hover:text-slate-800'
               }`}
             >
@@ -72,7 +72,7 @@ export default function StudentDashboard() {
               onClick={() => setActiveTab('courses')}
               className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-200 ${
                 activeTab === 'courses' 
-                  ? 'bg-blue-600 text-white shadow-md shadow-blue-100' 
+                  ? 'bg-emerald-600 text-white shadow-md shadow-emerald-100' 
                   : 'text-slate-500 hover:bg-slate-50 hover:text-slate-800'
               }`}
             >
@@ -82,7 +82,7 @@ export default function StudentDashboard() {
               onClick={() => setActiveTab('certificates')}
               className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-200 ${
                 activeTab === 'certificates' 
-                  ? 'bg-blue-600 text-white shadow-md shadow-blue-100' 
+                  ? 'bg-emerald-600 text-white shadow-md shadow-emerald-100' 
                   : 'text-slate-500 hover:bg-slate-50 hover:text-slate-800'
               }`}
             >
@@ -92,7 +92,7 @@ export default function StudentDashboard() {
               onClick={() => setActiveTab('profile')}
               className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-200 ${
                 activeTab === 'profile' 
-                  ? 'bg-blue-600 text-white shadow-md shadow-blue-100' 
+                  ? 'bg-emerald-600 text-white shadow-md shadow-emerald-100' 
                   : 'text-slate-500 hover:bg-slate-50 hover:text-slate-800'
               }`}
             >
@@ -104,12 +104,12 @@ export default function StudentDashboard() {
         {/* Sidebar Footer User Info */}
         <div className="border-t border-slate-100 pt-4 space-y-3">
           <div className="flex items-center gap-3 px-1">
-            <div className="h-10 w-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold uppercase border border-blue-100">
+            <div className="h-10 w-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold uppercase border border-emerald-100">
               {user?.name?.charAt(0) || 'S'}
             </div>
             <div className="truncate">
               <p className="text-sm font-bold text-slate-800 truncate">{user?.name || 'Student User'}</p>
-              <p className="text-[10px] bg-blue-50 text-blue-600 font-bold px-2 py-0.5 rounded-md inline-block uppercase mt-0.5 tracking-wider">{user?.role || 'STUDENT'}</p>
+              <p className="text-[10px] bg-emerald-50 text-emerald-600 font-bold px-2 py-0.5 rounded-md inline-block uppercase mt-0.5 tracking-wider">{user?.role || 'STUDENT'}</p>
             </div>
           </div>
           <button 
@@ -133,14 +133,14 @@ export default function StudentDashboard() {
               placeholder="Search your courses..." 
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-slate-50 border border-slate-200 rounded-xl py-1.5 pl-9 pr-4 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:bg-white transition-all"
+              className="w-full bg-slate-50 border border-slate-200 rounded-xl py-1.5 pl-9 pr-4 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:border-emerald-500 focus:bg-white transition-all"
             />
           </div>
           
           <div className="flex items-center gap-4 ml-auto">
             <button className="p-2 text-slate-400 hover:text-slate-600 bg-slate-50 hover:bg-slate-100 rounded-xl border border-slate-200/60 relative transition-colors">
               <Bell className="h-4 w-4" />
-              <span className="absolute top-1.5 right-1.5 h-1.5 w-1.5 bg-blue-600 rounded-full"></span>
+              <span className="absolute top-1.5 right-1.5 h-1.5 w-1.5 bg-emerald-600 rounded-full"></span>
             </button>
             <div className="h-6 w-px bg-slate-200"></div>
             <span className="text-sm font-medium text-slate-600 hidden md:inline">Welcome, <b className="text-slate-800 font-semibold">{user?.name}</b></span>
@@ -153,11 +153,11 @@ export default function StudentDashboard() {
           {/* TAB 1: MAIN DASHBOARD */}
           {activeTab === 'dashboard' && (
             <>
-              {/* Welcome Banner (Professional Soft-Blue Tech Style) */}
-              <div className="bg-gradient-to-br from-blue-600 to-indigo-700 p-6 md:p-8 rounded-3xl relative overflow-hidden shadow-md shadow-blue-100">
+              {/* Welcome Banner (Emerald & Teal Soft Banner) */}
+              <div className="bg-gradient-to-br from-emerald-600 to-teal-700 p-6 md:p-8 rounded-3xl relative overflow-hidden shadow-md shadow-emerald-100">
                 <div className="relative z-10 max-w-md text-white">
                   <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-2">Keep learning, <br/>reach your targets!</h2>
-                  <p className="text-sm text-blue-100/90 leading-relaxed mt-3">You have completed 65% of your learning path this week. Keep up the amazing work!</p>
+                  <p className="text-sm text-emerald-100/90 leading-relaxed mt-3">You have completed 65% of your learning path this week. Keep up the amazing work!</p>
                 </div>
                 <div className="absolute right-0 bottom-0 top-0 w-1/2 bg-[radial-gradient(circle_at_bottom_right,rgba(255,255,255,0.15),transparent)] pointer-events-none"></div>
               </div>
@@ -165,7 +165,7 @@ export default function StudentDashboard() {
               {/* STATS CARDS GRID */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                 <div className="bg-white border border-slate-200 p-5 rounded-2xl flex items-center gap-4 shadow-sm">
-                  <div className="p-3 bg-blue-50 text-blue-600 rounded-xl border border-blue-100/50"><BookOpen className="h-5 w-5" /></div>
+                  <div className="p-3 bg-emerald-50 text-emerald-600 rounded-xl border border-emerald-100/50"><BookOpen className="h-5 w-5" /></div>
                   <div><h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">Enrolled Courses</h3><p className="text-2xl font-bold mt-0.5 text-slate-800">{courses.length}</p></div>
                 </div>
                 <div className="bg-white border border-slate-200 p-5 rounded-2xl flex items-center gap-4 shadow-sm">
@@ -182,14 +182,14 @@ export default function StudentDashboard() {
               <div className="space-y-5">
                 <div className="flex items-center justify-between">
                   <h3 className="text-lg font-bold tracking-tight text-slate-800 flex items-center gap-2">
-                    <BookOpenCheck className="h-5 w-5 text-blue-600" /> Your Learning Progress
+                    <BookOpenCheck className="h-5 w-5 text-emerald-600" /> Your Learning Progress
                   </h3>
-                  <button onClick={() => setActiveTab('courses')} className="text-xs font-bold text-blue-600 hover:text-blue-700 transition-colors bg-blue-50 hover:bg-blue-100/60 px-3 py-1.5 rounded-xl border border-blue-100 flex items-center gap-1">View All <ChevronRight className="h-3 w-3" /></button>
+                  <button onClick={() => setActiveTab('courses')} className="text-xs font-bold text-emerald-600 hover:text-emerald-700 transition-colors bg-emerald-50 hover:bg-emerald-100/60 px-3 py-1.5 rounded-xl border border-emerald-100 flex items-center gap-1">View All <ChevronRight className="h-3 w-3" /></button>
                 </div>
 
                 {isLoading ? (
                   <div className="flex flex-col items-center justify-center py-16 gap-3 text-slate-400 bg-white rounded-3xl border border-slate-200 shadow-sm">
-                    <Loader2 className="h-7 w-7 animate-spin text-blue-600" />
+                    <Loader2 className="h-7 w-7 animate-spin text-emerald-600" />
                     <p className="text-xs font-semibold text-slate-500">Loading live courses...</p>
                   </div>
                 ) : filteredCourses.length === 0 ? (
@@ -205,7 +205,6 @@ export default function StudentDashboard() {
                         className="bg-white border border-slate-200 rounded-2xl overflow-hidden hover:border-slate-300 hover:shadow-xl hover:shadow-slate-200/50 transition-all duration-300 flex flex-col group cursor-pointer shadow-sm"
                       >
                         <div className="relative aspect-video overflow-hidden bg-slate-100">
-                          {/* 🌟 1 වෙනි තැන: Error Handling එකතු කළා */}
                           <img 
                             src={course.thumbnail} 
                             alt={course.title} 
@@ -216,7 +215,7 @@ export default function StudentDashboard() {
                             }}
                           />
                           <div className="absolute inset-0 bg-slate-950/20 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center backdrop-blur-[2px]">
-                            <button className="p-3 bg-blue-600 text-white rounded-full shadow-lg transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 hover:bg-blue-500">
+                            <button className="p-3 bg-emerald-600 text-white rounded-full shadow-lg transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 hover:bg-emerald-500">
                               <PlayCircle className="h-5 w-5 fill-white/10" />
                             </button>
                           </div>
@@ -225,17 +224,17 @@ export default function StudentDashboard() {
                         <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
                           <div>
                             <span className="px-2 py-0.5 bg-slate-100 text-slate-600 text-[10px] font-bold rounded-md border border-slate-200/40 uppercase tracking-wider">{course.category || 'Tech'}</span>
-                            <h4 className="font-bold text-slate-800 line-clamp-1 group-hover:text-blue-600 transition-colors duration-200 mt-2">{course.title}</h4>
+                            <h4 className="font-bold text-slate-800 line-clamp-1 group-hover:text-emerald-600 transition-colors duration-200 mt-2">{course.title}</h4>
                             <p className="text-xs text-slate-400 font-medium mt-0.5">by {course.instructor}</p>
                           </div>
 
                           <div className="space-y-2 pt-3 border-t border-slate-100">
                             <div className="flex justify-between items-center text-xs">
                               <span className="text-slate-400 font-semibold flex items-center gap-1.5"><Clock className="h-3 w-3 text-slate-400" /> {course.modules?.length || 0} Modules</span>
-                              <span className="font-bold text-blue-600">75%</span> 
+                              <span className="font-bold text-emerald-600">75%</span> 
                             </div>
                             <div className="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">
-                              <div className="h-full bg-blue-600 rounded-full" style={{ width: `75%` }}></div>
+                              <div className="h-full bg-emerald-600 rounded-full" style={{ width: `75%` }}></div>
                             </div>
                           </div>
                         </div>
@@ -250,13 +249,12 @@ export default function StudentDashboard() {
           {/* TAB 2: MY COURSES */}
           {activeTab === 'courses' && (
             <div className="space-y-5">
-              <h2 className="text-lg font-bold text-slate-800 flex items-center gap-2"><BookOpen className="text-blue-600 h-5 w-5" /> Enrolled Courses ({courses.length})</h2>
+              <h2 className="text-lg font-bold text-slate-800 flex items-center gap-2"><BookOpen className="text-emerald-600 h-5 w-5" /> Enrolled Courses ({courses.length})</h2>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {courses.map((course) => (
                   <div key={course._id} onClick={() => navigate(`/course/${course._id}`)} className="bg-white border border-slate-200 rounded-2xl overflow-hidden hover:border-slate-300 hover:shadow-xl hover:shadow-slate-200/50 transition-all flex flex-col group cursor-pointer shadow-sm">
                     <div className="relative aspect-video overflow-hidden bg-slate-100">
-                      {/*  2  */}
                       <img 
                         src={course.thumbnail} 
                         alt={course.title} 
@@ -269,7 +267,7 @@ export default function StudentDashboard() {
                     </div>
                     <div className="p-5 flex-1 flex flex-col justify-between space-y-2">
                       <div>
-                        <h4 className="font-bold text-slate-800 group-hover:text-blue-600 transition-colors line-clamp-1">{course.title}</h4>
+                        <h4 className="font-bold text-slate-800 group-hover:text-emerald-600 transition-colors line-clamp-1">{course.title}</h4>
                         <p className="text-xs text-slate-400 mt-0.5">by {course.instructor}</p>
                       </div>
                     </div>
@@ -293,10 +291,10 @@ export default function StudentDashboard() {
           {activeTab === 'profile' && (
             <div className="max-w-xl mx-auto bg-white border border-slate-200 rounded-3xl p-6 md:p-8 space-y-6 shadow-sm">
               <div className="flex items-center gap-5 pb-6 border-b border-slate-100">
-                <div className="h-16 w-16 bg-blue-600 rounded-2xl flex items-center justify-center text-2xl font-black text-white shadow-md shadow-blue-100">{user?.name?.charAt(0) || 'S'}</div>
+                <div className="h-16 w-16 bg-emerald-600 rounded-2xl flex items-center justify-center text-2xl font-black text-white shadow-md shadow-emerald-100">{user?.name?.charAt(0) || 'S'}</div>
                 <div>
                   <h3 className="text-xl font-bold text-slate-800">{user?.name}</h3>
-                  <p className="text-xs font-bold text-blue-600 uppercase tracking-wider mt-1 flex items-center gap-1"><Shield className="h-3 w-3" /> {user?.role || 'STUDENT'}</p>
+                  <p className="text-xs font-bold text-emerald-600 uppercase tracking-wider mt-1 flex items-center gap-1"><Shield className="h-3 w-3" /> {user?.role || 'STUDENT'}</p>
                 </div>
               </div>
               <div className="space-y-4">

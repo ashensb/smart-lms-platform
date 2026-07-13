@@ -48,3 +48,5 @@ Ensure both Docker Desktop and the Kubernetes cluster are active and running.
 Go to your Jenkins Dashboard and click Build Now.
 
 Once the build finishes successfully, verify the deployment status using kubectl get pods or kubectl get services in your command prompt.
+
+ // http://localhost:30080  
